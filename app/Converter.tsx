@@ -10,18 +10,16 @@ export default function Convert() {
   const [progress, setProgress] = useState('');
   const ffmpegRef = useRef(new FFmpeg());
 
-  const loadFFmpeg = async () => {
-    const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd';
+const loadFFmpeg = async () => {
+    const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd'; // 정확한 버전 명시
     const ffmpeg = ffmpegRef.current;
-    
-    ffmpeg.on('log', ({ message }) => {
-      if (message.includes('time=')) setProgress('오디오 추출 중... 최대 1분정도 소요될 수 있습니다_()_');
-    });
 
+    // Vercel 배포 환경에서 멈추지 않도록 core와 wasm 주소를 강제로 지정 🌟
     await ffmpeg.load({
       coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
       wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
     });
+    
     setLoaded(true);
   };
 
