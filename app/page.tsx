@@ -26,7 +26,7 @@ export default function Home() {
           <div className="flex justify-center items-center gap-2 mb-1">
             <span className="text-3xl">🙇‍♂️</span>
             <h1 className="text-xl md:text-2xl font-extrabold text-[#BF360C] tracking-tighter">
-               MP3 변환기
+              고음질 MP3 변환기
             </h1>
             <span className="text-3xl">📿</span>
           </div>
@@ -45,7 +45,7 @@ export default function Home() {
 
         {/* 푸터 영역 */}
         <footer className="text-center mt-4 pt-3 border-t-2 border-[#EEEEEE] text-[#A1887F] text-[11px]">
-          <p>최대 1분 정도 소요 됩니다. 🧘‍♂️</p>
+          <p>기다리면 자동으로 다운로드 됩니다. 최대 1분 정도 소요 됩니다. 🧘‍♂️</p>
         </footer>
       </div>
 
