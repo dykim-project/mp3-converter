@@ -44,8 +44,14 @@ const loadFFmpeg = async () => {
       await ffmpeg.exec(['-i', `input.${fileExtension}`, '-vn', '-q:a', '2', 'output.mp3']);
 
       setProgress('다운로드 파일 생성 중...');
-      const data = await ffmpeg.readFile('output.mp3');
-      const blob = new Blob([data], { type: 'audio/mp3' });
+     const data = await ffmpeg.readFile('output.mp3');
+
+      // 🌟 [수정] string 타입 예외 처리 및 SharedArrayBuffer 문제를 해결하기 위해 일반 Uint8Array로 복사
+      const rawData = typeof data === 'string' ? new TextEncoder().encode(data) : data;
+      const audioData = new Uint8Array(rawData); // 순수 Uint8Array로 완벽 변환!
+
+      // 이제 타입 오류 없이 깔끔하게 Blob이 생성됩니다.
+      const blob = new Blob([audioData], { type: 'audio/mp3' });
       
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
