@@ -31,7 +31,7 @@ export default function Home() {
             <span className="text-3xl">📿</span>
           </div>
           <p className="text-xs text-[#D84315] font-medium bg-[#FFF3E0] inline-block px-2.5 py-0.5 rounded-full">
-            m4a/mp4 번뇌를 벗고, mp3로 성불하세요. 🙏
+            m4a/mp4 번뇌를 벗고, mp3로 닙바나 성취하길. 🙏
           </p>
         </header>
 
