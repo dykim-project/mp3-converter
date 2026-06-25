@@ -38,7 +38,8 @@ export default function Convert() {
       await ffmpeg.writeFile(`input.${fileExtension}`, await fetchFile(file));
 
       setProgress('오디오 추출 중...');
-      await ffmpeg.exec(['-i', `input.${fileExtension}`, '-vn', '-b:a', '320k', 'output.mp3']);
+      await ffmpeg.exec(['-i', `input.${fileExtension}`, '-vn', '-q:a', '2', 'output.mp3']);
+
       setProgress('파일 생성 중...');
       const data = await ffmpeg.readFile('output.mp3');
 
